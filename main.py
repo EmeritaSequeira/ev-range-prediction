@@ -16,7 +16,9 @@ def load_model():
 model = load_model()
 
 # === Groq Client ===
-client = Groq(api_key=st.secrets["GROQ_API_KEY"])
+import os
+api_key = os.environ.get("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
+client = Groq(api_key=api_key)
 
 # === Sidebar ===
 st.sidebar.header("📥 Input Parameters")
